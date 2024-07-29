@@ -47,15 +47,15 @@ def testPlanOutScript(script, inputs={}, overrides=None, assertions=None):
 
   return payload
 
-
-@app.route('/run_test')
+#change everything below to use POST requests
+@app.route('/run_test', methods=['POST'])
 def run_test():
-  # not sure how to change everything to use POST requests
-  raw_script = request.args.get('compiled_code', '')
-  raw_inputs = request.args.get('inputs', '')
-  raw_overrides = request.args.get('overrides', "{}")
-  raw_assertions = request.args.get('assertions', "{}")
-  id = request.args.get('id')
+
+  raw_script = request.form.get('compiled_code', '')
+  raw_inputs = request.form.get('inputs', '')
+  raw_overrides = request.form.get('overrides', "{}")
+  raw_assertions = request.form.get('assertions', "{}")
+  id = request.form.get('id')
 
   script = json.loads(raw_script) if raw_script else {}
   try:

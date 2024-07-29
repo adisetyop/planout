@@ -1698,6 +1698,7 @@ function _runTest(/*string*/ id, /*object*/ updateBlob) /*bool*/  {
   }
   $.ajax({
     url: 'run_test',
+    type: 'POST',
     dataType: 'json',
     data: stringBlob,
     success: function(data) {
